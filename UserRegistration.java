@@ -4,10 +4,16 @@ import java.util.regex.Pattern;
 
 public class UserRegistration {
 
-	private static final String First_Name = "^[A-Z a-z]{1,3}$";
+	private static final String First_Name = "^[A-Z a-z]{1,5}$";
+	private static final String Last_Name = "^[A-Z a-z]{1,5}$";
+	
 	public boolean verifyFirstName (String fname) {
 		Pattern pattern = Pattern.compile(First_Name);
 		return pattern.matcher(fname).matches();
+	}
+	public boolean verifyLastName (String lname) {
+		Pattern pattern = Pattern.compile(Last_Name);
+		return pattern.matcher(lname).matches();
 	}
 public static void main(String[] args) {
 	Scanner in = new Scanner(System.in);
@@ -15,8 +21,10 @@ public static void main(String[] args) {
 	System.out.println("Enter the user Information");
 	System.out.println("Enter First Name :");
 	String fname = in.next();
-	System.out.println(data.verifyFirstName(fname));
-	
-	
+	System.out.println(data.verifyFirstName(fname));	
+	System.out.println("Enter Last Name :");
+	String lname = in.next();
+	System.out.println(data.verifyLastName(lname));	
+
 }
 }
