@@ -9,7 +9,7 @@ public class UserRegistration {
 	private static final String Mobile_Number = "[0-9]{10}";
 	private static final String Email_Id = "^[a-zA-Z0-9_-]+(?:\\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+\\.[a-zA-Z0-9_-]+(?:\\.[a-zA-Z0-9_-]+)*$";
 	private static final String Password1 = "^[a-zA-Z0-9_-]{8,}$";
-	
+	private static final String Password2 = "^[a-zA-Z0-9_-]{8,}(?=.*[A-Z])+$";
 	public boolean verifyFirstName (String fname) {
 		Pattern pattern = Pattern.compile(First_Name);
 		return pattern.matcher(fname).matches();
@@ -30,6 +30,10 @@ public class UserRegistration {
 		Pattern pattern = Pattern.compile(Password1);
 		return pattern.matcher(pswd1).matches();
 	}
+	public boolean verifyPassword2 (String pswd2) {
+		Pattern pattern = Pattern.compile(Password2);
+		return pattern.matcher(pswd2).matches();
+	}
 public static void main(String[] args) {
 	Scanner in = new Scanner(System.in);
 	UserRegistration data = new UserRegistration();
@@ -49,6 +53,9 @@ public static void main(String[] args) {
 	System.out.println("Enter Password :");
 	String pswd1 = in.next();
 	System.out.println(data.verifyPassword1(pswd1));
+	System.out.println("Enter Password2 :");
+	String pswd2 = in.next();
+	System.out.println(data.verifyPassword2(pswd2));
 
 }
 }
