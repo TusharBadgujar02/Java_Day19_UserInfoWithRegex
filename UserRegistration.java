@@ -12,7 +12,7 @@ public class UserRegistration {
 	private static final String Password2 = "^[a-zA-Z0-9_-]{8,}(?=.*[A-Z])+$";
 	private static final String Password3 = "^[a-zA-Z0-9_-]{8,}[?=.*A-Z]+[?=.*0-9]+$";
 	private static final String Password4 = "^[a-zA-Z0-9_-]{8,}[?=.*A-Z]+[?=.*0-9]+[?=.*! @#&()]{1}$";
-	
+	private static final String EmailId_Samples = "^[a-zA-Z.+0-9_-]+[@]{1}[a-zA-Z0-9]+[.]{1}[a-zA-Z,]{2,}[.,a-zA-Z]?$";
 			
     public boolean verifyFirstName (String fname) {
 		Pattern pattern = Pattern.compile(First_Name);
@@ -46,6 +46,10 @@ public class UserRegistration {
 		Pattern pattern = Pattern.compile(Password4);
 		return pattern.matcher(pswd4).matches();
 	}
+	public boolean verifyEmailIdSamples (String eidsample) {
+		Pattern pattern = Pattern.compile(EmailId_Samples);
+		return pattern.matcher(eidsample).matches();
+	}
 public static void main(String[] args) {
 	Scanner in = new Scanner(System.in);
 	UserRegistration data = new UserRegistration();
@@ -74,6 +78,9 @@ public static void main(String[] args) {
 	System.out.println("ENTER PASSWORD WITH EXACTLY ONE SPECIAL CHARACTER :");
 	String pswd4 = in.next();
 	System.out.println(data.verifyPassword4(pswd4));
+	System.out.println("Email Id Sample :");
+	String eidsample = in.next();
+	System.out.println(data.verifyPassword4(eidsample));
 
 }
 }
